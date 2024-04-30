@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const User = require('./user');
 
 const taskSchema = mongoose.Schema({
   description: {
@@ -9,6 +10,12 @@ const taskSchema = mongoose.Schema({
   completed: {
     type: Boolean,
     default: false,
+  },
+
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'User',
   },
 });
 
